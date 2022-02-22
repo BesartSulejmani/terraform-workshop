@@ -1,4 +1,4 @@
-# We strongly recommend using the required_providers block to set the
+# Recommended using the required_providers block to set the
 # Azure Provider source and version being used
 terraform {
   required_providers {
@@ -15,7 +15,7 @@ provider "azurerm" {
 }
 
 # Create resource group
-resource "azurerm_resource_group" "first_resource_group_tf_learn" {
-  name = "tf-learn-rg"
+resource "azurerm_resource_group" "tf_workshop_rg" {
+  name = "tf-workshop-rg"
   location = "westeurope"
 }
