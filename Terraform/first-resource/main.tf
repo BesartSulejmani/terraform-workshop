@@ -15,7 +15,7 @@ provider "azurerm" {
 }
 
 # Create resource group
-resource "azurerm_resource_group" "tf_workshop_rg" {
+resource "azurerm_resource_group" "myRG" {
   name = "tf-workshop-rg"
   location = "westeurope"
 }
