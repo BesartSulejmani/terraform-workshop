@@ -31,6 +31,7 @@ variable "vnetname" {
 }
 
 variable "vmprotection" {
+  type = bool
   default = true
 }
 
