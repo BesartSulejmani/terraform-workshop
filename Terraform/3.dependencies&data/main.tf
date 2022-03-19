@@ -22,9 +22,11 @@ resource "azurerm_resource_group" "myrg" {
 
 # Create app service plan
 resource "azurerm_app_service_plan" "myappplan" {
-  name                = "example-appserviceplan"
+  name                = "tf-workshop-plan01"
   location            = azurerm_resource_group.myrg.location
   resource_group_name = azurerm_resource_group.myrg.name
+  kind                = "Linux"
+  reserved            = true
 
   sku {
     tier = "Standard"
@@ -34,7 +36,7 @@ resource "azurerm_app_service_plan" "myappplan" {
 
 # Create azure app service
 resource "azurerm_app_service" "myappservice" {
-  name                = "example-app-service"
+  name                = "tf-workshop-app01"
   location            = azurerm_resource_group.myrg.location
   resource_group_name = azurerm_resource_group.myrg.name
   app_service_plan_id = azurerm_app_service_plan.myappplan.id
@@ -42,4 +44,27 @@ resource "azurerm_app_service" "myappservice" {
   site_config {
     dotnet_framework_version = "v5.0"
   }
+
+  storage_account {
+    name = "MyAppStorageMount"
+    type = "AzureBlob"
+    account_name = data.azurerm_storage_account.tfstatestorage.name
+    share_name = "containerformyapp"
+    access_key = data.azurerm_storage_account.tfstatestorage.primary_access_key
+  }
+
+  depends_on = [
+    azurerm_app_service_plan.myappplan
+  ]
+}
+
+# Get info on storage account tfstatebesart
+data "azurerm_storage_account" "tfstatestorage" {
+  name = "tfstatebesart"
+  resource_group_name = "tfstate-rg"
+}
+
+# Output storage account tier
+output "tfstatebesart_tier" {
+  value = data.azurerm_storage_account.tfstatestorage.account_tier
 }
