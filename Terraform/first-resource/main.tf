@@ -3,8 +3,8 @@
 terraform {
   required_providers {
     azurerm = {
-        source = "hashicorp/azurerm"
-        version = "2.97.0"
+      source  = "hashicorp/azurerm"
+      version = "2.97.0"
     }
   }
 }
@@ -16,7 +16,7 @@ provider "azurerm" {
 
 # Create resource group
 resource "azurerm_resource_group" "myrg" {
-  name = "tf-workshop-rg"
+  name     = "tf-workshop-rg"
   location = "westeurope"
 }
 
