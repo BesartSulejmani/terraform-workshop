@@ -27,12 +27,11 @@ variable "rgname" {
 
 variable "vnetname" {
   type = string
-  default = "tf-workshop-vnet01"
 }
 
 variable "vmprotection" {
   type = bool
-  default = true
+  default = false
 }
 
 variable "vnetaddress" {
@@ -74,4 +73,8 @@ resource "azurerm_virtual_network" "myvnet" {
       address_prefix = var.subnetmap["subnet02_prefix"]
   }
 
+}
+
+output "vnetid" {
+  value = azurerm_virtual_network.myvnet.id
 }
