@@ -1,0 +1,96 @@
+# https://aka.ms/yaml
+
+name: Terraform-Workshop-CICD
+
+trigger: none
+
+variables:
+- group: backend_config           #tbc__ prefix
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages :
+# Terraform syntax validation
+- stage: Validate
+  displayName: Validate Terraform Configuration
+  jobs:
+  - job: Validate
+    displayName: Validate Terraform Configuration
+    steps:
+
+    # Install specific Terraform version 
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+      displayName: 'Terraform : Install'
+      inputs:
+        terraformVersion: 1.1.7
+    
+    # Terraform init: initialize working directory containing Terraform configuration files
+    - task: TerraformTaskV2@2
+      displayName: 'Terraform : Init'
+      inputs:
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/5.cicdautomation'
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: '$(tbc__backend_service_arm)'
+        backendAzureRmResourceGroupName: '$(tbc__resource_group_name)'
+        backendAzureRmStorageAccountName: '$(tbc__storage_account_name)'
+        backendAzureRmContainerName: '$(tbc__stcontainer_name)'
+        backendAzureRmKey: '$(tbc__tfstate)'
+    
+    # Validate Terraform syntax
+    - task: TerraformTaskV2@2
+      displayName: 'Terraform : Validate'
+      inputs:
+        command: validate
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/5.cicdautomation'
+
+# Terraform deployment
+- stage: Deploy
+  displayName: Deploy Terraform Configuration
+  dependsOn: Validate
+  condition: succeeded('Validate')
+
+  jobs:
+  - job: Deploy
+    displayName: Deploy Terraform Configuration
+    steps:
+     
+    # Install specific Terraform version 
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+      displayName: 'Terraform : Install'
+      inputs:
+        terraformVersion: 1.1.7
+    
+    # Terraform init: initialize working directory containing Terraform configuration files
+    - task: TerraformTaskV2@2
+      displayName: 'Terraform : Init'
+      inputs:
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/5.cicdautomation'
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: '$(tbc__backend_service_arm)'
+        backendAzureRmResourceGroupName: '$(tbc__resource_group_name)'
+        backendAzureRmStorageAccountName: '$(tbc__storage_account_name)'
+        backendAzureRmContainerName: '$(tbc__stcontainer_name)'
+        backendAzureRmKey: '$(tbc__tfstate)'
+    
+    # Terraform plan: check if proposed changes match your expectation before applying those changes
+    # Save the Terraform plan in an output file so it can be injected in the following command 'Terraform apply'         
+    - task: TerraformTaskV2@2
+      displayName: 'Terraform : Plan'
+      inputs:
+        command: 'plan'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/5.cicdautomation'
+        commandOptions: '-out workshop.tfplan'
+        environmentServiceNameAzureRM: '$(tbc__backend_service_arm)'
+
+    # Apply the changes that are saved in the output from 'Terraform plan'
+    - task: TerraformTaskV2@2
+      name: 'TerraformApply'
+      displayName: 'Terraform : Apply'
+      inputs:
+        command: 'apply'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/5.cicdautomation'
+        commandOptions: workshop.tfplan
+        environmentServiceNameAzureRM: '$(tbc__backend_service_arm)'
