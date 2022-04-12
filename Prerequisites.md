@@ -6,11 +6,10 @@ Tools and extensions needed to get started with this workshop:
 
 ### **VS Code**
 | Name                                    | Installation Method    | Install Command                                    |
-| ----------------------------------------| -----------------------| -----------------------------------------------|
+| ----------------------------------------| -----------------------| ---------------------------------------------------|
 | VS Code                                 | Download & Install     | [Download here](https://code.visualstudio.com/)    |
 | Hashicorp Terraform                     | VS Code extension      | Install in VS Code                                 |
-| Terraform by Anton Kulikov              | VS Code extension      | Install in VS Code                                 |
-| Azure Account                           | VS Code extension      | Install in VS Code
+| Azure Account                           | VS Code extension      | Install in VS Code                                 |
 
 ---
 
@@ -21,6 +20,17 @@ After installing the Azure Account extension in VS Code make sure you sign in to
 ```
 Tip: ctrl + shift + p brings up the command palette and then you can search for "Azure: Sign in"
 ```
+
+</br>
+
+---
+
+
+### **Git**
+
+| Name                      | Installation Method    | Install Command                                              |
+| ------------------------  | ---------------------- | -----------------------------------------------------------  |
+| Git                       | Download & Install     | [Download here](https://git-scm.com/downloads)     |
 
 </br>
 

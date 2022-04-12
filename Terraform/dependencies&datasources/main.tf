@@ -45,13 +45,13 @@ resource "azurerm_app_service" "myappservice" {
     dotnet_framework_version = "v5.0"
   }
 
-  storage_account {
-    name = "MyAppStorageMount"
-    type = "AzureBlob"
-    account_name = data.azurerm_storage_account.tfstatestorage.name
-    share_name = "containerformyapp"
-    access_key = data.azurerm_storage_account.tfstatestorage.primary_access_key
-  }
+  # storage_account {
+  #   name = "MyAppStorageMount"
+  #   type = "AzureBlob"
+  #   account_name = data.azurerm_storage_account.tfstatestorage.name
+  #   share_name = "containerformyapp"
+  #   access_key = data.azurerm_storage_account.tfstatestorage.primary_access_key
+  # }
 
   depends_on = [
     azurerm_app_service_plan.myappplan
@@ -64,7 +64,7 @@ data "azurerm_storage_account" "tfstatestorage" {
   resource_group_name = "tfstate-rg"
 }
 
-# Output storage account tier
+# Output storage account tier to illustrate use of a data source
 output "tfstatebesart_tier" {
   value = data.azurerm_storage_account.tfstatestorage.account_tier
 }
