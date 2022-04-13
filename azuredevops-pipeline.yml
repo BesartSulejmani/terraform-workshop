@@ -40,7 +40,7 @@ stages :
         backendServiceArm: '$(tbc__backend_service_arm)'                    # Credentials used by terraform backend to connect to the azurerm provider
         backendAzureRmResourceGroupName: '$(tbc__resource_group_name)'      # Resource group containing the storage account in your subscription
         backendAzureRmStorageAccountName: '$(tbc__storage_account_name)'    # Storage account used to store the tfstate file
-        backendAzureRmContainerName: '$(tbc__stcontainer_name)'             # Storage container used to store the tfstate file
+        backendAzureRmContainerName: '$(tbc__storage_container_name)'             # Storage container used to store the tfstate file
         backendAzureRmKey: '$(tbc__tfstate)'                                # Name of the tfstate file
     
     # Validate Terraform syntax
@@ -77,7 +77,7 @@ stages :
         backendServiceArm: '$(tbc__backend_service_arm)'                    # Credentials used by terraform backend to connect to the azurerm provider
         backendAzureRmResourceGroupName: '$(tbc__resource_group_name)'      # Resource group containing the storage account in your subscription
         backendAzureRmStorageAccountName: '$(tbc__storage_account_name)'    # Storage account used to store the tfstate file
-        backendAzureRmContainerName: '$(tbc__stcontainer_name)'             # Storage container used to store the tfstate file
+        backendAzureRmContainerName: '$(tbc__storage_container_name)'             # Storage container used to store the tfstate file
         backendAzureRmKey: '$(tbc__tfstate)'                                # Name of the tfstate file
     
     # Terraform plan: check if proposed changes match your expectation before applying those changes
