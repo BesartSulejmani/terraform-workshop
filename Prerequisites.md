@@ -42,6 +42,16 @@ Tip: ctrl + shift + p brings up the command palette and then you can search for 
 | ------------------------  | ---------------------- | -----------------------------------------------------------  |
 | Terraform                 | Download & Install     | [Download here](https://www.terraform.io/downloads.html)     |
 
+Terraform install for Windows:
+
+1. After downloading the package, unzip it.
+2. Create a folder in your C: drive: "C:\Terraform"
+3. Copy the terraform.exe file into the folder "C:\Terraform"
+4. Edit the "System Environment Variables"
+5. In the "System variables" edit the "Path" variable
+6. Add "C:\Terraform" 
+7. Open VS Code (reopen it if it was already opened up) and run the command ``terraform --version`` and it should show you the latest version installed on your machine
+
 </br>
 
 ---
