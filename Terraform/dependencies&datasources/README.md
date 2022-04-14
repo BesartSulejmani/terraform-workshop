@@ -23,8 +23,7 @@
    1. Terraform knows that an app plan belongs to an app service but for the purpose of learning, we’re adding this explicit dependency.
 
 5. Run ``terraform apply`` and approve the changes.
-   1. Without the explicit dependancy, terraform creates multiple resources in parallel. But, with the explicit dependency defined in this configuration, </br>
-   2. Terraform creates the resources one by one. This means that it waits till the first resource is created, before the other one comes in that has an explicit dependency defined.
+   1. Without the explicit dependancy, terraform creates multiple resources in parallel. But, with the explicit dependency defined in this configuration, Terraform creates the resources one by one. This means that Terraform waits till the first resource is created, before the other one comes in that has an explicit dependency defined.
 
 ### Section 2
 6. Create a new resource group and storage account manually in the azure portal. </br>
