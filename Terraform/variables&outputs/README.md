@@ -81,12 +81,12 @@ variable "name" {
 ### Section 2
 16.    Remove the default input of the ``vnetname variable`` leaving only the description and the type. 
 17.    Run ``terraform plan`` again and it will ask for input during the run. 
-       1.     You have created an input variable and you can see the description of that variable in the terminal.
+       1.   You have created an input variable and you can see the description of that variable in the terminal.
 
 ### Section 3
-18.   Create a ``.tfvars file`` and add the value of the ``vnetname variable`` in there called “tf-workshop-vnet01” **(refer to the source code [tfvars](./terraform.tfvars))**
-19.   Run ``terraform plan`` again and you’ll see that terraform picks up the value from the tfvars file automatically. 
+18.    Create a ``.tfvars file`` and add the value of the ``vnetname variable`` in there called “tf-workshop-vnet01” **(refer to the source code [tfvars](./terraform.tfvars))**
+19.    Run ``terraform plan`` again and you’ll see that terraform picks up the value from the tfvars file automatically. 
       1.    Terraform recognizes tfvars files and combines them with your variables declared in your configuration.
 
-20. **Continue with the powerpoint presentation slide:** **"Recap variables & outputs demo "**
+20.  **Continue with the powerpoint presentation slide:** **"Recap variables & outputs demo "**
 
