@@ -1,6 +1,6 @@
 # Dependencies & Data Sources demo
 
-### Section 1
+### Section 1 Dependencies
 1. Create a new folder “dependencies&datasources”.
 2. Create a new main.tf and copy the provider and resource group of an earlier configuration.
 
@@ -25,7 +25,7 @@
 5. Run ``terraform apply`` and approve the changes.
    1. Without the explicit dependancy, terraform creates multiple resources in parallel. But, with the explicit dependency defined in this configuration, Terraform creates the resources one by one. This means that Terraform waits till the first resource is created, before the other one comes in that has an explicit dependency defined.
 
-### Section 2
+### Section 2 Data Sources
 6. Create a new resource group and storage account manually in the azure portal. </br>
    1. Remember that a storage account name must be globally unique.
 7. Create a container in the storage account called “containerformyapp”.

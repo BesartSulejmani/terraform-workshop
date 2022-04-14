@@ -1,6 +1,6 @@
 # Modules & Remote Backends demo
 
-### Section 1
+### Section 1 Modules
 1. Create a new folder “modules&remotebackends”.
 2. Create a main.tf file and copy the provider and resource group from the previous configuration.
 3. Create a folder “myapp” within the folder “modules&remotebackends”.
@@ -12,7 +12,7 @@
    2. In a module block you have to define a source path where the module configuration resides. In this case it's the subfolder called "myapp".
    3. The two variables we have set in the module make the module reusable. We can call this module in different Terraform projects and create the app service in different resourcegroups with each their own Azure Region (location).
 
-### Section 2
+### Section 2 Remote Backends
 5. In the root main.tf add to the terraform block:
 
 ```

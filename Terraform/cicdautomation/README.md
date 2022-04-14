@@ -1,6 +1,6 @@
 # Automation with Azure DevOps demo
 
-### Section 1
+### Section 1 Azure DevOps Organization & Service Connection setup
 1. Set up an Azure DevOps organization for free to get started on [this page](https://azure.microsoft.com/en-us/services/devops/?nav=min).
 2. Give your organization a name.
 3. Choose the location that is most close to you where your project will be hosted (Azure Region).
@@ -16,7 +16,7 @@
 
 </br>
 
-### Section 2
+### Section 2 Uploading your source code to Azure Repos
 1. Copy this folder “cicdautomation” and add it to the Terraform folder. **(refer to the source code [cicdautomation](../cicdautomation))**
    1. This folder contains almost the same configuration as the “modules&remotebackends” config but it’s slightly different. You're going to use this configuration to deploy from an Azure DevOps pipeline. 
 
@@ -42,7 +42,7 @@
 
 </br>
 
-### Section 3
+### Section 3 Azure DevOps Marketplace Extensions
 7. Go to the [Azure DevOps Marketplace](https://marketplace.visualstudio.com/azuredevops).
 7. Search for Terraform.
 8. Select Terraform from Microsoft DevLabs and click “get it free”.
@@ -50,7 +50,7 @@
 
 </br>
 
-### Section 4
+### Section 4 Variable Groups
 10. Open your Azure DevOps project.
 11. Go to the Pipelines section and open “Library”.
 12. Create a new variable group.
@@ -66,7 +66,7 @@
 ```
 </br>
 
-### Section 5
+### Section 5 Automation with an Azure Pipeline
 13. Open the Pipelines page.
 14. Click on “New Pipeline”.
 15. Select “Azure Repos Git”.

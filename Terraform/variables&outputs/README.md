@@ -1,6 +1,6 @@
 # Variables & Outputs demo
 
-### Section 1
+### Section 1 General usage variables & outputs
 1. Create a folder called “variables&outputs”.
 2. Create a “main.tf” file.
 3. Create a "variables.tf" file.
@@ -78,12 +78,12 @@ variable "name" {
 
 15.  Before continuing run ``terraform destroy --auto-approve`` and all your resources will be deleted.
 
-### Section 2
+### Section 2 Input variables
 16.    Remove the default input of the ``vnetname variable`` leaving only the description and the type. 
 17.    Run ``terraform plan`` again and it will ask for input during the run. 
        1.   You have created an input variable and you can see the description of that variable in the terminal.
 
-### Section 3
+### Section 3 .tfvars file
 18.    Create a ``.tfvars file`` and add the value of the ``vnetname variable`` in there called “tf-workshop-vnet01” **(refer to the source code [tfvars](./terraform.tfvars))**
 19.    Run ``terraform plan`` again and you’ll see that terraform picks up the value from the tfvars file automatically. 
       1.    Terraform recognizes tfvars files and combines them with your variables declared in your configuration.
