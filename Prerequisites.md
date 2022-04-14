@@ -44,7 +44,7 @@ Tip: ctrl + shift + p brings up the command palette and then you can search for 
 
 Terraform install for Windows:
 
-1. After downloading the package, unzip it.
+1. After downloading the package, unzip it
 2. Create a folder in your C: drive: "C:\Terraform"
 3. Copy the terraform.exe file into the folder "C:\Terraform"
 4. Edit the "System Environment Variables"
