@@ -67,26 +67,26 @@ variable "name" {
 }
 ```
 
-1.   Change the resources in your main.tf to use the variables **(refer to the source code [variables&outputs](./main.tf))**
-2.   Add the ouput block for vnetid like in the source code on GitHub **(refer to the source code [variables&outputs](./main.tf))** </br>
-     1.   An output block outputs information in your terminal about a specific attribute of a resource that is only known after the resource is created.
+10.   Change the resources in your main.tf to use the variables **(refer to the source code [variables&outputs](./main.tf))**
+11.   Add the ouput block for vnetid like in the source code on GitHub **(refer to the source code [variables&outputs](./main.tf))** </br>
+      1.    An output block outputs information in your terminal about a specific attribute of a resource that is only known after the resource is created.
 
-3.   Open this folder in integrated terminal
-4.   Run ``terraform init``
-5.   Run ``terraform apply --auto-approve`` and you should see the attributes like vnet name and address spaces etc. </br>
-     1.   An output of the vnetid is shown which is only known after apply.
+12.   Open this folder in integrated terminal
+13.   Run ``terraform init``
+14.   Run ``terraform apply --auto-approve`` and you should see the attributes like vnet name and address spaces etc. </br>
+      1.    An output of the vnetid is shown which is only known after apply.
 
-6.   Before continuing run ``terraform destroy --auto-approve`` and all your resources will be deleted.
+15.  Before continuing run ``terraform destroy --auto-approve`` and all your resources will be deleted.
 
 ### Section 2
-1.    Remove the default input of the ``vnetname variable`` leaving only the description and the type. 
-2.    Run ``terraform plan`` again and it will ask for input during the run. 
-      1.    You have created an input variable and you can see the description of that variable in the terminal.
+16.    Remove the default input of the ``vnetname variable`` leaving only the description and the type. 
+17.    Run ``terraform plan`` again and it will ask for input during the run. 
+       1.     You have created an input variable and you can see the description of that variable in the terminal.
 
 ### Section 3
-1.   Create a ``.tfvars file`` and add the value of the ``vnetname variable`` in there called “tf-workshop-vnet01” **(refer to the source code [tfvars](./terraform.tfvars))**
-2.   Run ``terraform plan`` again and you’ll see that terraform picks up the value from the tfvars file automatically. 
-     1.   Terraform recognizes tfvars files and combines them with your variables declared in your configuration.
+18.   Create a ``.tfvars file`` and add the value of the ``vnetname variable`` in there called “tf-workshop-vnet01” **(refer to the source code [tfvars](./terraform.tfvars))**
+19.   Run ``terraform plan`` again and you’ll see that terraform picks up the value from the tfvars file automatically. 
+      1.    Terraform recognizes tfvars files and combines them with your variables declared in your configuration.
 
-3.  **Continue with the powerpoint presentation slide:** **"Recap variables & outputs demo "**
+20. **Continue with the powerpoint presentation slide:** **"Recap variables & outputs demo "**
 
