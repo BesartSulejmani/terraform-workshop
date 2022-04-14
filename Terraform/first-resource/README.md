@@ -1,21 +1,35 @@
 # First-Resource demo
 
-1. Create a folder called “Terraform”
-2. Create a sub folder called “first-resource”
-3. Create a “main.tf” file 
-4. Start off with the terraform block and add the required providers block, in this case azurerm
+1. Create a folder called “Terraform”.
+2. Create a sub folder called “first-resource”.
+3. Create a “main.tf” file .
+4. Start off with the terraform block and add the required providers block, in this case azurerm. **(refer to the source code [first-resource](./main.tf))**
    1. Specify the source and version
 
-5. Add the providers block for azurerm with the features block and leave it empty
+5. Add the providers block for azurerm with the features block and leave it empty. **(refer to the source code [first-resource](./main.tf))**
 6. Add a resource block
+
+```
+   resource "type" "name" {
+
+   }
+```
    1. Resource is telling terraform that we want to create something
-   2. The Type tells terraform the actual resource that you want to create
-   3. Name isn’t what we want to call the resource but rather internally inside our Terraform code how we can refer to it
+   2. The Type tells terraform the actual resource that you want to create. Set the type to ``azurerm_resource_group``.
+   3. The name behind the type isn’t what we want to call the resource but rather internally inside the Terraform configuration, how Terraform can refer to it. Choose a name you like.
 
-7. Add virtual network resource with the attributes as is in the source code
+7. Set the required attributes for the resource group.
+   1. You can refer to the source code
+   2. You can also refer to the Terraform Registry [Resource: azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/2.97.0/docs/resources/resource_group) where each resource is explained and what attributes are used. You can also see which attributes are required and which are optional. 
+   3. In the Terraform Registry you will see that the "name" and "location" attributes are required for a resource group. This is what you need to set to get a valid Terraform configuration.
+ 
 
-8. **Use the source code, if needed, to confirm your configuration:** **[first-resource](./main.tf)**
-9. **Continue with the powerpoint presentation slide:** **"Recap first-resource"**
+8. Add a Virtual Network as a resource with the required attributes. Refer to the [Terraform Registry](https://registry.terraform.io/providers/hashicorp/azurerm/2.97.0/docs/resources/virtual_network)
+   1. Notice in my configuration **([first-resource](./main.tf))** that the resource group name and location are not hard coded, but rather refering to the resource group by using the type, reference name and attributes.
+
+</br>
+
+10. **Continue with the powerpoint presentation slide:** **"Recap first-resource"**
 
 ----------------------------------
 
