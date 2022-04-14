@@ -1,4 +1,4 @@
-# Terraform Workshop
+# **Terraform Workshop**
 
 This repository contains the code that is demoed during the presentation **"Infrastructure as Code with Terraform"** given by Besart Sulejmani. </br>
 
@@ -8,7 +8,7 @@ The PowerPoint slide deck has been added to this repository. Make sure to check 
 
 README files have been added in each configuration folder as an instruction set to help you go over the demos by yourself.
 
-**Logical order of this workshop**
+# Logical order of this workshop
 
 - Go through the PowerPoint slide deck and switch between the demo slides to the below instructions
 
@@ -33,7 +33,7 @@ README files have been added in each configuration folder as an instruction set 
 
 </br>
 
-### Check the [**prerequisites**](Prerequisites.md) before you start!
+## Check the [**prerequisites**](Prerequisites.md) before you start!
 
 </br>
 
