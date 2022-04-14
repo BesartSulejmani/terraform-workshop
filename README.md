@@ -8,7 +8,7 @@ The PowerPoint slide deck has been added to this repository. Make sure to check 
 
 README files have been added in each configuration folder as an instruction set to help you go over the demos by yourself.
 
-# Logical order of this workshop
+# Logical order for this workshop
 
 - Go through the PowerPoint slide deck and switch between the demo slides to the below instructions
 
