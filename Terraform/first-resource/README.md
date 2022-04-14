@@ -3,10 +3,21 @@
 1. Create a folder called “Terraform”.
 2. Create a sub folder called “first-resource”.
 3. Create a “main.tf” file .
+
+```
+. (terraform-workshop)
+|
+├── Terraform
+│   └── first-resource
+│       └── main.tf
+
+```
+
 4. Start off with the terraform block and add the required providers block, in this case azurerm. **(refer to the source code [first-resource](./main.tf))**
    1. Specify the source and version
 
 5. Add the providers block for azurerm with the features block and leave it empty. **(refer to the source code [first-resource](./main.tf))**
+
 6. Add a resource block
 
 ```
