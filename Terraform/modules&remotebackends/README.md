@@ -7,10 +7,28 @@
    1. Create a main.tf for myapp folder.
    2. Copy the configuration from my source code. **(refer to the source code [myapp module](./myapp/main.tf))**
 
+```
+. (terraform-workshop)
+|
+├── Terraform
+|   ├── modules&remotebackends
+|   |   ├── myapp
+|   |   |   └── main.tf
+|   |   └── main.tf
+|   ├── dependencies&datasources
+|   |   └── main.tf
+|   ├── variables&outputs
+|   |   └── main.tf
+|   |   └── variables.tf
+│   └── first-resource
+│       └── main.tf
+
+```
+
 4. Declare the module block in the root main.tf file. **(refer to the source code [modules&remotebackends](./main.tf))**
-   1. The module block contains only the type of resource (module in this case) and a reference name (myappservice).
+   1. The module block contains only the type of resource (module in this case) and a reference name "myappservice".
    2. In a module block you have to define a source path where the module configuration resides. In this case it's the subfolder called "myapp".
-   3. The two variables we have set in the module make the module reusable. We can call this module in different Terraform projects and create the app service in different resourcegroups with each their own Azure Region (location).
+   3. The two variables we have set in the module, makes the module more reusable. We can call this module in different Terraform projects and create the app service in different resourcegroups with a different Azure Region (location).
 
 ### Section 2 Remote Backends
 5. In the root main.tf add to the terraform block:
