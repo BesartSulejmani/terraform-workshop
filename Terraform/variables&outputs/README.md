@@ -88,5 +88,5 @@ variable "name" {
 19.    Run ``terraform plan`` again and you’ll see that terraform picks up the value from the tfvars file automatically. 
       1.    Terraform recognizes tfvars files and combines them with your variables declared in your configuration.
 
-20.  **Continue with the powerpoint presentation slide:** **"Recap variables & outputs demo "**
+20.  **Continue with the powerpoint presentation slide:** **"Recap variables & outputs demo " (slide: 16)**
 
