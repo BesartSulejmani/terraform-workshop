@@ -59,4 +59,4 @@
 ### **Note!**
 Before continuing, run ``terraform destroy`` and all your resources deployed with Terraform will be deleted. **Leave the storage account that you created manually** for the next demos.
 
-15. **Continue with the powerpoint presentation slide:** **"Recap dependencies & data sources demo"**
+15. **Continue with the powerpoint presentation slide:** **"Recap dependencies & data sources demo" (slide: 20)**

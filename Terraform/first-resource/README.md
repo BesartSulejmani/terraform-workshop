@@ -40,7 +40,7 @@
 
 </br>
 
-10. **Continue with the powerpoint presentation slide:** **"Recap first-resource"**
+10. **Continue with the powerpoint presentation slide:** **"Recap first-resource" (slide: 9)**
 
 ----------------------------------
 
@@ -74,5 +74,5 @@
 
 
 7. **Use the source code, if needed, to confirm your configuration:** **[first-resource](./main.tf)**
-8. **Continue with the powerpoint presentation slide:** **"Terraform state file"**
+8. **Continue with the powerpoint presentation slide:** **"Terraform state file" (slide: 12)**
 
