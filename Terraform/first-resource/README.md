@@ -40,7 +40,7 @@
 
 </br>
 
-10. **Continue with the powerpoint presentation slide:** **"Recap first-resource" (slide 9)**
+10. **Continue with the powerpoint presentation slide:** **"Recap first-resource" (slide: 9)**
 
 ----------------------------------
 
