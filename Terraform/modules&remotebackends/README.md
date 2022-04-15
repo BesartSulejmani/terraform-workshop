@@ -51,4 +51,4 @@ backend “azurerm” {
    3. Furthermore you should see the App service plan and App service in your Azure portal that have been deployed by calling upon it as a module.
 
 8. Run ``terraform destroy`` and approve to destroy the resources you deployed. **Again leave the storage account that you created manually** for the next demo.
-9. **Continue with the powerpoint presentation slide:** **"Recap modules & remote backends demo"**
+9. **Continue with the powerpoint presentation slide:** **"Recap modules & remote backends demo" (slide: 24)**
