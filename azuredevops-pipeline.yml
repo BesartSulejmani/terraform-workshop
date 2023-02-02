@@ -4,7 +4,10 @@
 name: Terraform-Workshop-CICD
 
 # Trigger of the pipeline when code is checked into the repo (in this case no automatic trigger)
-trigger: none
+trigger:
+  branches:
+    include:
+      - refs/heads/develop
 
 # Variables or variable groups defined for this pipeline to use
 variables:
@@ -19,6 +22,7 @@ stages :
 # Terraform syntax validation
 - stage: Validate
   displayName: Validate Terraform Configuration
+  condition: or(startsWith(variables['Build.SourceBranch'], 'refs/heads/develop'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature'))
   jobs:
   - job: Validate
     displayName: Validate Terraform Configuration
