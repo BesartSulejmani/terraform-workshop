@@ -10,6 +10,15 @@ trigger:
     - refs/heads/develop
     - refs/heads/release/*
     - refs/heads/hotfix/*
+    - 
+# Variables or variable groups defined for this pipeline to use
+variables:
+- group: backend_config           #tbc__ prefix
+
+# Pool vmImage specifies which agent should be used to run this pipeline. 
+# In this case the "ubuntu-latest" image is being used to run this pipeline
+pool:
+  vmImage: 'ubuntu-latest'
 
 parameters:
 
