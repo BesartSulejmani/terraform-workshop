@@ -8,6 +8,8 @@ trigger:
   branches:
     include:
       - refs/heads/develop
+      - refs/heads/release/*
+      - refs/heads/hotfix/*
 
 # Variables or variable groups defined for this pipeline to use
 variables:
@@ -58,7 +60,7 @@ stages :
 - stage: Deploy
   displayName: Deploy Terraform Configuration
   dependsOn: Validate
-  condition: or(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release'), startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix'))
+  condition: or(startsWith(variables['Build.SourceBranch'], 'refs/heads/release'), startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix'))
 
   jobs:
   - job: Deploy
