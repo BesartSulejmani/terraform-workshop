@@ -7,9 +7,9 @@ name: Terraform-Workshop-CICD
 trigger:
   branches:
     include:
-      - refs/heads/develop
-      - refs/heads/release/*
-      - refs/heads/hotfix/*
+    - refs/heads/develop
+    - refs/heads/release/*
+    - refs/heads/hotfix/*
 
 # Variables or variable groups defined for this pipeline to use
 variables:
