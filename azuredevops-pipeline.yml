@@ -57,7 +57,7 @@ stages:
         parameters:
           dtapName: t
     - ${{ if or(eq(parameters.components, 'deploy'), eq(parameters.components, 'all')) }}:
-      - template: /terraform-deply.yml
+      - template: /terraform-deploy.yml
         parameters:
           dtapName: t
 
