@@ -10,7 +10,7 @@ trigger:
     - refs/heads/develop
     - refs/heads/release/*
     - refs/heads/hotfix/*
-    - 
+
 # Variables or variable groups defined for this pipeline to use
 variables:
 - group: backend_config           #tbc__ prefix
@@ -45,7 +45,6 @@ stages:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: o
-          components: ${{ parameters.components }}
 
   - stage: test
     displayName: test
@@ -61,7 +60,6 @@ stages:
       - template: /terraform-validate.yml
         parameters:
           dtapName: t
-          components: ${{ parameters.components }}
 
   - stage: acceptatie
     displayName: acceptatie
@@ -77,7 +75,6 @@ stages:
       - template: /terraform-validate.yml
         parameters:
           dtapName: a
-          components: ${{ parameters.components }}
 
   - stage: productie
     displayName: productie
@@ -93,4 +90,3 @@ stages:
       - template: /terraform-validate.yml
         parameters:
           dtapName: p
-          components: ${{ parameters.components }}
