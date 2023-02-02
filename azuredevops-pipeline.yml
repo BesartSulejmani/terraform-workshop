@@ -16,6 +16,7 @@ parameters:
   - name: components
     displayName: 'just validate, just deploy, or both?'
     type: string
+    default: all
     values:
     - validate
     - deploy
@@ -31,7 +32,6 @@ stages:
       - template: /terraform-validate.yml
         parameters:
           dtapName: o
-          components: ${{ parameters.components }}
     - ${{ if or(eq(parameters.components, 'app'), eq(parameters.components, 'all')) }}:
       - template: /terraform-deploy.yml
         parameters:
