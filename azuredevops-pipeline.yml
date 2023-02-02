@@ -58,7 +58,7 @@ stages :
 - stage: Deploy
   displayName: Deploy Terraform Configuration
   dependsOn: Validate
-  condition: succeeded('Validate')
+  condition: or(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release'), startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix'))
 
   jobs:
   - job: Deploy
