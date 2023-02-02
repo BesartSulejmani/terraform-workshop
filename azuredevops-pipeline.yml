@@ -1,6 +1,6 @@
 # https://aka.ms/yaml
 
-# Name of the pipeline applied during run
+# Name of the pipeline deploylied during run
 name: Terraform-Workshop-CICD
 
 # Trigger of the pipeline when code is checked into the repo (in this case no automatic trigger)
@@ -37,11 +37,11 @@ stages:
     displayName: ontwikkel
     condition: or(startsWith(variables['Build.SourceBranch'], 'refs/heads/develop'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature'))
     jobs:
-    - ${{ if or(eq(parameters.components, 'infra'), eq(parameters.components, 'all')) }}:
+    - ${{ if or(eq(parameters.components, 'validate'), eq(parameters.components, 'all')) }}:
       - template: /terraform-validate.yml
         parameters:
           dtapName: o
-    - ${{ if or(eq(parameters.components, 'app'), eq(parameters.components, 'all')) }}:
+    - ${{ if or(eq(parameters.components, 'deploy'), eq(parameters.components, 'all')) }}:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: o
@@ -53,11 +53,11 @@ stages:
     - ontwikkel
     condition: or(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release'), startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix'))
     jobs:
-    - ${{ if or(eq(parameters.components, 'infra'), eq(parameters.components, 'all')) }}:
+    - ${{ if or(eq(parameters.components, 'validate'), eq(parameters.components, 'all')) }}:
       - template: /terraform-validate.yml
         parameters:
           dtapName: t
-    - ${{ if or(eq(parameters.components, 'app'), eq(parameters.components, 'all')) }}:
+    - ${{ if or(eq(parameters.components, 'deploy'), eq(parameters.components, 'all')) }}:
       - template: /terraform-validate.yml
         parameters:
           dtapName: t
@@ -69,11 +69,11 @@ stages:
     - test
     condition: or(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release'), startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix'))
     jobs:
-    - ${{ if or(eq(parameters.components, 'infra'), eq(parameters.components, 'all')) }}:
+    - ${{ if or(eq(parameters.components, 'validate'), eq(parameters.components, 'all')) }}:
       - template: /terraform-validate.yml
         parameters:
           dtapName: a
-    - ${{ if or(eq(parameters.components, 'app'), eq(parameters.components, 'all')) }}:
+    - ${{ if or(eq(parameters.components, 'deploy'), eq(parameters.components, 'all')) }}:
       - template: /terraform-validate.yml
         parameters:
           dtapName: a
@@ -85,11 +85,11 @@ stages:
     - acceptatie
     condition: or(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release'), startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix'))
     jobs:
-    - ${{ if or(eq(parameters.components, 'infra'), eq(parameters.components, 'all')) }}:
+    - ${{ if or(eq(parameters.components, 'validate'), eq(parameters.components, 'all')) }}:
       - template: /terraform-validate.yml
         parameters:
           dtapName: p
-    - ${{ if or(eq(parameters.components, 'app'), eq(parameters.components, 'all')) }}:
+    - ${{ if or(eq(parameters.components, 'deploy'), eq(parameters.components, 'all')) }}:
       - template: /terraform-validate.yml
         parameters:
           dtapName: p
