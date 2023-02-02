@@ -11,7 +11,7 @@ trigger:
     - refs/heads/release/*
     - refs/heads/hotfix/*
 
-Parameters:
+parameters:
 
   - name: components
     displayName: 'just validate, just deploy, or both?'
