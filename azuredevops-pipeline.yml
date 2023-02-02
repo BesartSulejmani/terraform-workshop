@@ -35,18 +35,16 @@ stages:
 
   - stage: ontwikkel
     displayName: ontwikkel
-    condition: or(startsWith(variables['Build.SourceBranch'], 'refs/heads/develop'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature'))
+    condition: and(startsWith(variables['Build.SourceBranch'], 'refs/heads/develop'))
     jobs:
     - ${{ if or(eq(parameters.components, 'validate'), eq(parameters.components, 'all')) }}:
       - template: /terraform-validate.yml
         parameters:
           dtapName: o
-          components: ${{ parameters.components }}
     - ${{ if or(eq(parameters.components, 'deploy'), eq(parameters.components, 'all')) }}:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: o
-          components: ${{ parameters.components }}
 
   - stage: test
     displayName: test
@@ -58,12 +56,10 @@ stages:
       - template: /terraform-validate.yml
         parameters:
           dtapName: t
-          components: ${{ parameters.components }}
     - ${{ if or(eq(parameters.components, 'deploy'), eq(parameters.components, 'all')) }}:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: t
-          components: ${{ parameters.components }}
 
   - stage: acceptatie
     displayName: acceptatie
@@ -75,12 +71,10 @@ stages:
       - template: /terraform-validate.yml
         parameters:
           dtapName: a
-          components: ${{ parameters.components }}
     - ${{ if or(eq(parameters.components, 'deploy'), eq(parameters.components, 'all')) }}:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: a
-          components: ${{ parameters.components }}
 
   - stage: productie
     displayName: productie
@@ -92,9 +86,7 @@ stages:
       - template: /terraform-validate.yml
         parameters:
           dtapName: p
-          components: ${{ parameters.components }}
     - ${{ if or(eq(parameters.components, 'deploy'), eq(parameters.components, 'all')) }}:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: p
-          components: ${{ parameters.components }}
