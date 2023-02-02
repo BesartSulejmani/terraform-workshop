@@ -1,4 +1,3 @@
-# https://aka.ms/yaml
 
 # Name of the pipeline deploylied during run
 name: Terraform-Workshop-CICD
