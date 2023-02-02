@@ -1,6 +1,9 @@
+parameters:
+- name: dtapName
+  type: string
 
 jobs:
-  - job: Validate
+  - job: 'Validate_${{ parameters.dtapName }}'
     displayName: Validate Terraform Configuration
     steps:
 

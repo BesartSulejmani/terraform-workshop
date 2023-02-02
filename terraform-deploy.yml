@@ -1,6 +1,9 @@
-
+parameters:
+- name: dtapName
+  type: string
+  
 jobs:
-  - job: Deploy
+  - job: 'Deploy_${{ parameters.dtapName }}'
     displayName: Deploy Terraform Configuration
     steps:
      
