@@ -35,7 +35,7 @@ stages:
 
   - stage: ontwikkel
     displayName: ontwikkel
-    condition: and(startsWith(variables['Build.SourceBranch'], 'refs/heads/develop'))
+    condition: or(startsWith(variables['Build.SourceBranch'], 'refs/heads/develop'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature'))
     jobs:
     - ${{ if or(eq(parameters.components, 'validate'), eq(parameters.components, 'all')) }}:
       - template: /terraform-validate.yml
