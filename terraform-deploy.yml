@@ -1,0 +1,54 @@
+trigger: none
+
+# Variables or variable groups defined for this pipeline to use
+variables:
+- group: backend_config           #tbc__ prefix
+
+# Pool vmImage specifies which agent should be used to run this pipeline. 
+# In this case the "ubuntu-latest" image is being used to run this pipeline
+pool:
+  vmImage: 'ubuntu-latest'
+  
+jobs:
+  - job: Deploy
+    displayName: Deploy Terraform Configuration
+    steps:
+     
+    # Install specific Terraform version on the microsoft hosted agent
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+      displayName: 'Terraform : Install'
+      inputs:
+        terraformVersion: 1.1.7
+    
+    # Terraform init: initialize working directory containing Terraform configuration files
+    - task: TerraformTaskV2@2
+      displayName: 'Terraform : Init'
+      inputs:
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/cicdautomation' # location of terraform configuration files in your repo
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: '$(tbc__backend_service_arm)'                    # Credentials used by terraform backend to connect to the azurerm provider
+        backendAzureRmResourceGroupName: '$(tbc__resource_group_name)'      # Resource group containing the storage account in your subscription
+        backendAzureRmStorageAccountName: '$(tbc__storage_account_name)'    # Storage account used to store the tfstate file
+        backendAzureRmContainerName: '$(tbc__storage_container_name)'             # Storage container used to store the tfstate file
+        backendAzureRmKey: '$(tbc__tfstate)'                                # Name of the tfstate file
+    
+    # Terraform plan: check if proposed changes match your expectation before applying those changes
+    # Save the Terraform plan in an output file so it can be injected in the following command 'Terraform apply'         
+    - task: TerraformTaskV2@2
+      displayName: 'Terraform : Plan'
+      inputs:
+        command: 'plan'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/cicdautomation'
+        commandOptions: '-out workshop.tfplan' # Output terraform plan to file and save this file
+        environmentServiceNameAzureRM: '$(tbc__backend_service_arm)'
+
+    # Apply the changes that are saved in the output from 'Terraform plan'
+    - task: TerraformTaskV2@2
+      name: 'TerraformApply'
+      displayName: 'Terraform : Apply'
+      inputs:
+        command: 'apply'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/cicdautomation'
+        commandOptions: workshop.tfplan # Output of terraform plan file that is saved in the previous task, to be sure that is applied what came out of that plan
+        environmentServiceNameAzureRM: '$(tbc__backend_service_arm)'
