@@ -45,6 +45,7 @@ stages:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: o
+          environment: ${{ parameters.components }}
 
   - stage: test
     displayName: test
