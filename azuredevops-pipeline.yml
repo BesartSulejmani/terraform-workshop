@@ -61,6 +61,7 @@ stages:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: t
+          environment: ${{ parameters.components }}
 
   - stage: acceptatie
     displayName: acceptatie
@@ -76,6 +77,7 @@ stages:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: a
+          environment: ${{ parameters.components }}
 
   - stage: productie
     displayName: productie
@@ -91,3 +93,4 @@ stages:
       - template: /terraform-deploy.yml
         parameters:
           dtapName: p
+          environment: ${{ parameters.components }}
