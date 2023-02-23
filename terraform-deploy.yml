@@ -3,6 +3,8 @@ parameters:
   type: string
 - name: components
   type: string
+- name: environment
+  type: string
   
 jobs:
   - deployment: 'Deploy_${{ parameters.dtapName }}'
