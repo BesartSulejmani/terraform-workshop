@@ -16,7 +16,7 @@ jobs:
           - task: TerraformTaskV2@2
             displayName: 'Terraform : Init'
             inputs:
-              workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/cicdautomation' # location of terraform configuration files in your repo
+              workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/cicdautomation' # location of terraform configuration files in your repo
               provider: 'azurerm'
               command: 'init'
               backendServiceArm: '$(tbc__backend_service_arm)'                    # Credentials used by terraform backend to connect to the azurerm provider
@@ -31,7 +31,7 @@ jobs:
             displayName: 'Terraform : Plan'
             inputs:
               command: 'plan'
-              workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/cicdautomation'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/cicdautomation'
               commandOptions: '-out workshop.tfplan' # Output terraform plan to file and save this file
               environmentServiceNameAzureRM: '$(tbc__backend_service_arm)'
 
@@ -41,6 +41,6 @@ jobs:
             displayName: 'Terraform : Apply'
             inputs:
               command: 'apply'
-              workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/cicdautomation'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/cicdautomation'
               commandOptions: workshop.tfplan # Output of terraform plan file that is saved in the previous task, to be sure that is applied what came out of that plan
               environmentServiceNameAzureRM: '$(tbc__backend_service_arm)'
