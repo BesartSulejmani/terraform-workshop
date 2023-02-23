@@ -6,7 +6,7 @@ parameters:
 
 jobs:
   - deployment: 'Deploy_${{ parameters.dtapName }}'
-    environment: test
+    environment: acceptatie
     strategy:
       runOnce:
         deploy:
